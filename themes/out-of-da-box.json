@@ -1,0 +1,332 @@
+{
+  "_note1": "Recommend installing Windows Terminal with Nerd Fonts for better interface and icons.",
+  "_note2": "For latest Oh My Posh only and some recent versions - I cannot guarantee it'd work with older versions!",
+
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "bg": "#0d1117",
+    "dim": "#6e7681",
+    "text": "#e6edf3",
+    "text-soft": "#8b949e",
+    "blue": "#58a6ff",
+    "cyan": "#39d0d8",
+    "green": "#3fb950",
+    "yellow": "#f0c674",
+    "red": "#f85149",
+    "magenta": "#cc338b",
+    "purple": "#a78bfa",
+    "node-fg": "#a8ff78",
+    "py-fg": "#ffe873",
+    "go-fg": "#79d4f1",
+    "rust-fg": "#f4a261",
+    "git-clean-fg": "#3fb950",
+    "git-dirty-fg": "#fb923c"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "╭─ ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:cyan",
+          "style": "plain",
+          "template": " {{ div (sub .PhysicalTotalMemory .PhysicalAvailableMemory) 1073741824 }}GB/{{ div .PhysicalTotalMemory 1073741824 }}GB | {{ .PhysicalPercentUsed }}% ",
+          "type": "sysinfo",
+          "properties": {}
+        },
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": " ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:purple",
+          "properties": {
+            "always_enabled": true,
+            "style": "austin",
+            "threshold": 0
+          },
+          "style": "plain",
+          "template": " 󰑓 {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "  ",
+          "type": "text",
+          "properties": {}
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "newline": false,
+      "segments": [
+        {
+          "foreground": "p:yellow",
+          "properties": {
+            "time_format": "15:04:05 | Mon 02 Jan"
+          },
+          "style": "plain",
+          "template": " {{ .CurrentDate | date .Format }} 󰥔 ",
+          "type": "time"
+        },
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "─╮",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "│  ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:node-fg",
+          "properties": {
+            "fetch_version": true,
+            "fetch_package_manager": true,
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }}{{ end }} {{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "foreground": "p:py-fg",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": " py {{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }} ",
+          "type": "python"
+        },
+        {
+          "foreground": "p:go-fg",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": " go {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "type": "go"
+        },
+        {
+          "foreground": "p:rust-fg",
+          "properties": {
+            "fetch_version": true,
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": " rs {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "type": "rust"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "newline": false,
+      "segments": [
+        {
+          "foreground": "p:dim",
+          "properties": {
+            "display_mode": "context"
+          },
+          "style": "plain",
+          "template": " {{ .Name }} v{{ .Version }}   ",
+          "type": "project"
+        },
+        {
+          "foreground": "p:text-soft",
+          "style": "plain",
+          "template": "│",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "╰─ ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:blue",
+          "style": "plain",
+          "template": " {{ .UserName }}@{{ .HostName }} ",
+          "type": "session",
+          "properties": {}
+        },
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": " ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:text",
+          "properties": {
+            "folder_separator_icon": "/",
+            "home_icon": "~",
+            "style": "agnoster_short",
+            "max_depth": 4
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": " ",
+          "type": "text",
+          "properties": {}
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "newline": false,
+      "segments": [
+{
+          "foreground": "p:git-clean-fg",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-dirty-fg{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": " ",
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true,
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} ~ {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} ! {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} s{{ .StashCount }}{{ end }} {{ .UpstreamIcon }} ",
+          "type": "git"
+},
+{
+  "foreground": "p:dim",
+  "style": "plain",
+  "template": " {{ .Name }}  ",
+  "type": "shell"
+},
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "─╯",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:dim",
+          "style": "plain",
+          "template": "   │",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:green",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:red{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "   {{ if gt .Code 0 }}{{ else }}{{ end }} ",
+          "type": "status"
+        },
+        {
+          "foreground": "p:text-soft",
+          "style": "plain",
+          "template": "{{ $p := list \"Execute command\" \"What shall we do?\" \"Ready when you are\" \"Awaiting your command\" \"Go ahead, I'm listening\" \"Type something cool\" \"Make it happen\" \"Your move\" \"The terminal is yours\" \"Hack the planet\" \"sudo make me a sandwich\" \"What could go wrong?\" \"I'm not judging\" \"Let's get to work\" \"One command at a time\" }}{{ $i := mod (now | date \"05\" | int) 15 }}{{ index $p $i }} ",
+          "type": "text",
+          "properties": {}
+        },
+        {
+          "foreground": "p:green",
+          "properties": {
+            "playing_icon": "󰎆 ",
+            "paused_icon": "󰏤 ",
+            "stopped_icon": "",
+            "max_length": 40
+          },
+          "style": "plain",
+          "template": "{{ if .Connected }}{{ .Icon }}{{ .Full }} {{ end }}",
+          "type": "ytm"
+        },
+        {
+          "foreground": "p:green",
+          "properties": {
+            "playing_icon": "󰎆 ",
+            "paused_icon": "󰏤 ",
+            "stopped_icon": "",
+            "max_length": 40
+          },
+          "style": "plain",
+          "template": "{{ if .Connected }}{{ .Icon }}{{ .Full }} {{ end }}",
+          "type": "spotify"
+        },
+        {
+          "foreground": "p:blue",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:red{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": "",
+          "type": "status"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "newline_before_prompt": true,
+  "console_title_template": "{{ .Folder }}",
+  "final_space": true,
+  "version": 5
+}
